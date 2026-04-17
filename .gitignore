@@ -2,7 +2,10 @@
 PPToPDF.app/
 AppIcon.iconset/
 *.icns
+*.zip
+*.dmg
 build/
+dist/
 
 # macOS
 .DS_Store
