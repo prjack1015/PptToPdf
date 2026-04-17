@@ -10,9 +10,14 @@ PPT·Word 파일을 **PDF로 일괄 변환**해주는 macOS 앱입니다.
 ## 다운로드 & 실행
 
 ### 1. 다운로드
-[Releases 페이지](https://github.com/prjack1015/PptToPdf/releases/latest)에서 `PPToPDF-vX.X.X.zip`을 받아 압축을 풉니다.
+
+[Releases 페이지](https://github.com/prjack1015/PptToPdf/releases/latest)에서 다음 둘 중 편한 형식을 받습니다.
+
+- **`PPToPDF-vX.X.X.dmg`** (권장) — 더블클릭으로 열어 `PPToPDF.app`을 `Applications` 폴더로 드래그
+- **`PPToPDF-vX.X.X.zip`** — 압축을 풀어 원하는 위치에 `PPToPDF.app`을 둠
 
 ### 2. 첫 실행 (중요)
+
 이 앱은 Apple 코드 서명이 되어 있지 않아 처음 실행할 때 macOS가 막을 수 있습니다.
 
 **Finder에서 `PPToPDF.app`을 우클릭 → "열기" → 경고창에서 다시 "열기"** 를 누르면 이후부터는 일반 앱처럼 더블클릭으로 실행됩니다.
@@ -21,6 +26,7 @@ PPT·Word 파일을 **PDF로 일괄 변환**해주는 macOS 앱입니다.
 > 시스템 설정 → "개인정보 보호 및 보안" 맨 아래에서도 "확인 없이 열기"를 누를 수 있습니다.
 
 ### 3. 자동화 권한 허용
+
 첫 변환 시 macOS가 **Keynote / Pages를 제어해도 되는지** 묻는 다이얼로그를 띄웁니다. "허용"을 눌러야 변환이 동작합니다.
 (이 앱은 Keynote/Pages의 PDF 내보내기 기능을 이용해 변환합니다 — Keynote/Pages가 미리 설치되어 있어야 해요.)
 
@@ -54,20 +60,23 @@ bash build.sh
 open PPToPDF.app
 ```
 
-릴리즈 zip 패키지 만들기:
+릴리즈 패키지(zip + dmg) 만들기:
+
 ```bash
 bash release.sh 1.0.0
 # → dist/PPToPDF-v1.0.0.zip
+# → dist/PPToPDF-v1.0.0.dmg
 ```
 
 ### 프로젝트 구조
-```
+
+```text
 Source/
   AppMain.swift          # SwiftUI 엔트리
   ContentView.swift      # UI (드래그 앤 드롭 / 툴바 / 리스트)
   ConversionEngine.swift # 변환 큐 + AppleScript 자동화
 build.sh                 # swiftc 직접 컴파일 → .app 번들 조립
-release.sh               # 빌드 + ditto 압축 → dist/*.zip
+release.sh               # 빌드 + 서명 + ditto/hdiutil → dist/*.{zip,dmg}
 ```
 
 ---
