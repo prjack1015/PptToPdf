@@ -1,0 +1,21 @@
+# 빌드 산출물
+PPToPDF.app/
+AppIcon.iconset/
+*.icns
+build/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode
+xcuserdata/
+*.xcworkspace/
+DerivedData/
+
+# Swift
+.build/
+Packages/
+*.xcodeproj
+.swiftpm/
